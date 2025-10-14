@@ -1,0 +1,80 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| pythondb           |
+| sakila             |
+| sys                |
+| webgui             |
+| world              |
+| xyz                |
++--------------------+
+11 rows in set (0.03 sec)
+
+mysql> use webgui;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_webgui |
++------------------+
+| registration     |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from registration;
++----+------+--------+----------+
+| id | name | course | fee      |
++----+------+--------+----------+
+|  1 | ram  | nlp    | 30000.00 |
++----+------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> desc info;
+ERROR 1146 (42S02): Table 'webgui.info' doesn't exist
+mysql> desc registration;
++--------+---------------+------+-----+---------+----------------+
+| Field  | Type          | Null | Key | Default | Extra          |
++--------+---------------+------+-----+---------+----------------+
+| id     | int           | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100)  | NO   |     | NULL    |                |
+| course | varchar(100)  | NO   |     | NULL    |                |
+| fee    | decimal(10,2) | NO   |     | NULL    |                |
++--------+---------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> alter table registration
+    -> add column gender varchar(10),
+    -> add column branch varchar(50);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc registration;
++--------+---------------+------+-----+---------+----------------+
+| Field  | Type          | Null | Key | Default | Extra          |
++--------+---------------+------+-----+---------+----------------+
+| id     | int           | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100)  | NO   |     | NULL    |                |
+| course | varchar(100)  | NO   |     | NULL    |                |
+| fee    | decimal(10,2) | NO   |     | NULL    |                |
+| gender | varchar(10)   | YES  |     | NULL    |                |
+| branch | varchar(50)   | YES  |     | NULL    |                |
++--------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from registration;
++----+-------+--------+-----------+--------+--------+
+| id | name  | course | fee       | gender | branch |
++----+-------+--------+-----------+--------+--------+
+|  2 | ram   | nlp    | 100000.00 | Male   | cse    |
+|  3 | eisha | ai     |  40000.00 | Female | cse    |
+|  4 | sam   | genai  |  50000.00 | Male   | eee    |
+|  5 | rina  | ds     |  30000.00 | Female | ee     |
++----+-------+--------+-----------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
